@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: njse2etest2
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: njse2etest2
+    sonarqube.org/project-key: njse2etest2
+    github.com/project-slug: jk7testorg/njse2etest2
+    argocd/app-name: njse2etest2-dev
+    prometheus.io/rule: "kube_pod_status_phase{pod=~'njse2etest2.*'}|phase,kube_pod_container_status_restarts_total{pod=~'njse2etest2.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+    grafana/overview-dashboard: 'http://34.29.242.32/grafana/d/ffuuiuytw0f0gb/backstage-view?var-pod_prefix=njse2etest2&var-namespace=dev&kiosk' 
+  tags:
+    - java-maven
+    - scaffolded
+spec:
+  type: service
+  lifecycle: Dev
+  owner: user:default/madryx
+  system: dssp-platform
